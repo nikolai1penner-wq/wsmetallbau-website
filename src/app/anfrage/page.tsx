@@ -5,33 +5,37 @@ import { site, telHref } from "@/lib/site";
 
 export const metadata = pageMeta({
   title: "Anfrage: Projekt oder Privatauftrag",
-  description: "Projektanfrage mit Plan-Upload für Architekten und Bauträger oder kurze Anfrage für Privatkunden. Antwort an Werktagen innerhalb von 24 Stunden.",
+  description: "Projektanfrage mit Plan-Upload für Architekten und Bauträger oder kurze Anfrage mit Fotos für Privatkunden. Antwort innerhalb eines Werktags.",
   path: "/anfrage/",
 });
 
 export default function Page() {
   return (
-    <div className="wrap pt-8">
-      <Breadcrumbs items={[{ name: "Anfrage", path: "/anfrage/" }]} />
-      <h1 className="h1">Anfrage</h1>
-      <p className="lede mt-5">
-        Wählen Sie den passenden Weg. Wir melden uns an Werktagen innerhalb von 24 Stunden
-        {site.phone && <>, oder rufen Sie direkt an: <a href={telHref(site.phone)} className="link">{site.phone}</a></>}.
-      </p>
-      <div className="mt-12 grid gap-10 lg:grid-cols-2">
-        <section id="projekt" className="panel scroll-mt-6 border-t-4 border-t-steel p-6">
-          <span className="tag objektbau w-fit">Objektbau</span>
-          <h2 className="h2">Projektanfrage</h2>
-          <p className="mb-4 text-muted">Für Architekten, Planer, Bauträger und Gewerbe.</p>
-          <AnfrageForm art="projekt" />
+    <>
+      <section className="dark pt-10 pb-14">
+        <div className="wrap grid gap-6">
+          <Breadcrumbs onDark items={[{ name: "Anfrage", path: "/anfrage/" }]} />
+          <h1 className="h1">Erzählen Sie uns von Ihrem Projekt</h1>
+          <p className="lede text-on-dark-2">
+            Pläne, Fotos oder eine Skizze genügen. Wir melden uns innerhalb eines Werktags
+            {site.phone && <>, oder rufen Sie direkt an: <a href={telHref(site.phone)} className="text-accent-light">{site.phone}</a></>}.
+          </p>
+        </div>
+      </section>
+      <div className="wrap grid gap-8 py-14 lg:grid-cols-2">
+        <section id="projekt" className="flex scroll-mt-4 flex-col gap-4 border-t-4 border-anthracite bg-sheet p-6 sm:p-8">
+          <span className="eyebrow text-muted">Objektbau</span>
+          <h2 className="h2-sm">Projektanfrage</h2>
+          <p className="text-ink-2">Für Architekten, Planer, Bauträger und Gewerbe. Gern mit Plänen oder Leistungsverzeichnis.</p>
+          <AnfrageForm variante="projekt" submitLabel="Projektanfrage senden" />
         </section>
-        <section id="privat" className="panel scroll-mt-6 border-t-4 border-t-[var(--b2c)] p-6">
-          <span className="tag privat w-fit">Privat</span>
-          <h2 className="h2">Privatanfrage</h2>
-          <p className="mb-4 text-muted">Für Ihr Haus, Ihre Wohnung oder Ihr Grundstück.</p>
-          <AnfrageForm art="privat" />
+        <section id="privat" className="flex scroll-mt-4 flex-col gap-4 border-t-4 border-accent bg-sheet p-6 sm:p-8">
+          <span className="eyebrow text-privat">Privat</span>
+          <h2 className="h2-sm">Privatanfrage</h2>
+          <p className="text-ink-2">Für Ihr Haus, Ihre Wohnung oder Ihr Grundstück. Fotos und ungefähre Maße genügen.</p>
+          <AnfrageForm variante="privat" />
         </section>
       </div>
-    </div>
+    </>
   );
 }

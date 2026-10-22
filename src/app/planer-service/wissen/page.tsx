@@ -10,10 +10,10 @@ export const metadata = pageMeta({
 
 export default function Page() {
   return (
-    <div className="wrap pt-8">
+    <div className="wrap pt-10 pb-20">
       <Breadcrumbs items={[{ name: "Planer-Service", path: "/planer-service/" }, { name: "Wissen", path: "/planer-service/wissen/" }]} />
-      <h1 className="h1">Fachwissen</h1>
-      <p className="lede mt-5">Kurze, präzise Artikel zu Fragen aus der Planungspraxis. Geplant: EN 1090 und Ausführungsklassen, Korrosionsschutz nach ISO 12944, absturzsichernde Verglasung nach DIN 18008, Treppen nach DIN 18065.</p>
+      <h1 className="h1 mt-6">Fachwissen</h1>
+      <p className="lede mt-5 text-ink-2">Kurze, präzise Artikel zu Fragen aus der Planungspraxis. Geplant: EN 1090 und Ausführungsklassen, Korrosionsschutz nach ISO 12944, absturzsichernde Verglasung nach DIN 18008, Treppen nach DIN 18065.</p>
     </div>
   );
 }

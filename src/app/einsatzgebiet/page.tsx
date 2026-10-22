@@ -16,13 +16,13 @@ export default function Page() {
     { title: "70 bis 100 km, vor allem Objektbau", orte: site.serviceArea.rand },
   ];
   return (
-    <div className="wrap pt-8">
+    <div className="wrap pt-10 pb-20">
       <Breadcrumbs items={[{ name: "Einsatzgebiet", path: "/einsatzgebiet/" }]} />
-      <h1 className="h1">Einsatzgebiet</h1>
-      <p className="lede mt-5">Von Herford aus arbeiten wir in ganz Ostwestfalen-Lippe und bis zu 100 km darüber hinaus.</p>
+      <h1 className="h1 mt-6">Einsatzgebiet</h1>
+      <p className="lede mt-5 text-ink-2">Von Herford aus arbeiten wir in ganz Ostwestfalen-Lippe und bis zu 100 km darüber hinaus.</p>
       <section className="mt-12 grid gap-4 md:grid-cols-3">
         {zonen.map((z) => (
-          <div key={z.title} className="panel">
+          <div key={z.title} className="grid content-start gap-2 bg-sheet p-6">
             <h2 className="h3">{z.title}</h2>
             <p className="text-muted">{z.orte.join(", ")}</p>
           </div>

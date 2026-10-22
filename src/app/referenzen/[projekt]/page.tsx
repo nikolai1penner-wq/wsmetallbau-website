@@ -36,9 +36,9 @@ export default async function Page({ params }: PageProps<"/referenzen/[projekt]"
     ["Bauzeit", r.bauzeit],
   ].filter((f): f is [string, string] => Boolean(f[1]));
   return (
-    <article className="wrap pt-8">
+    <article className="wrap pt-10 pb-20">
       <Breadcrumbs items={[{ name: "Referenzen", path: "/referenzen/" }, { name: r.title, path: `/referenzen/${r.slug}/` }]} />
-      <h1 className="h1">{r.title}</h1>
+      <h1 className="h1 mt-6">{r.title}</h1>
       <dl className="mt-8 grid gap-px border border-line bg-line sm:grid-cols-3">
         {facts.map(([k, v]) => (
           <div key={k} className="bg-sheet p-4">
@@ -51,7 +51,7 @@ export default async function Page({ params }: PageProps<"/referenzen/[projekt]"
         <div><h2 className="h3">Herausforderung</h2><p className="mt-2">{r.herausforderung}</p></div>
         <div><h2 className="h3">Lösung</h2><p className="mt-2">{r.loesung}</p></div>
       </section>
-      <CtaBand segment={r.segment} />
+      <CtaBand />
     </article>
   );
 }

@@ -5,7 +5,7 @@ export const site = {
   // TODO: einheitlichen Firmennamen festlegen (Website, Impressum und Verzeichnisse weichen ab)
   name: "WS Metallbau und Bauelemente",
   legalName: "W&S Edelstahlbau und Bauelemente GbR",
-  shortName: "WSMetall",
+  shortName: "WS Metallbau",
   // TODO: feste Telefonnummer eintragen, dann erscheint sie in Kopf, Fuß und JSON-LD
   phone: "",
   email: "info@wsmetall.de",
@@ -27,8 +27,16 @@ export const site = {
   facts: [
     { value: "750+", label: "umgesetzte Projekte" },
     { value: "20+", label: "Jahre Erfahrung" },
-    { value: "100 km", label: "Einsatzradius um Herford" },
+    { value: "100 km", label: "Einsatzgebiet ab Herford" },
   ],
+  // TODO: Kennzahlen der Fertigung ergänzen (Werkstattfläche, Montageteams), erscheinen dann auf /objektbau/
+  fertigung: [
+    { k: "Erfahrung", v: "20+ Jahre, 750+ Projekte" },
+    { k: "Materialien", v: "Stahl, Edelstahl, Glas" },
+    { k: "Fertigung", v: "eigene Werkstatt in Herford" },
+    { k: "Montage", v: "eigene Teams" },
+    { k: "Einsatzgebiet", v: "100 km um Herford" },
+  ] as { k: string; v: string }[],
   serviceArea: {
     kern: ["Herford", "Bielefeld", "Bad Salzuflen", "Bünde", "Löhne", "Enger", "Spenge", "Vlotho", "Bad Oeynhausen", "Lemgo"],
     erweitert: ["Gütersloh", "Minden", "Detmold", "Lübbecke", "Osnabrück", "Rheda-Wiedenbrück", "Hameln"],

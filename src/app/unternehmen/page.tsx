@@ -10,20 +10,20 @@ export const metadata = pageMeta({
 
 export default function Page() {
   return (
-    <div className="wrap pt-8">
+    <div className="wrap pt-10 pb-20">
       <Breadcrumbs items={[{ name: "Unternehmen", path: "/unternehmen/" }]} />
-      <h1 className="h1">Unternehmen</h1>
-      <p className="lede mt-5">
+      <h1 className="h1 mt-6">Unternehmen</h1>
+      <p className="lede mt-5 text-ink-2">
         Seit über 20 Jahren planen, fertigen und montieren wir Metallbau aus Herford. Über 750 Projekte für Bauträger,
         Gewerbe und Privatkunden.
       </p>
       <section className="mt-12 grid gap-4 md:grid-cols-3">
-        <div className="panel">
+        <div className="grid content-start gap-2 bg-sheet p-6">
           <h2 className="h3">Fertigung</h2>
           {/* TODO: Hallenfläche, Maschinenpark, Kranlasten */}
           <p className="text-muted">Angaben zu Halle, Maschinen und Kapazität folgen.</p>
         </div>
-        <div className="panel">
+        <div className="grid content-start gap-2 bg-sheet p-6">
           <h2 className="h3">Zertifizierung</h2>
           <p className="text-muted">
             {site.certification
@@ -31,7 +31,7 @@ export default function Page() {
               : "Angaben zur Zertifizierung folgen."}
           </p>
         </div>
-        <div className="panel">
+        <div className="grid content-start gap-2 bg-sheet p-6">
           <h2 className="h3">Ansprechpartner</h2>
           <p className="text-muted">{site.owners.join(" und ")}</p>
         </div>

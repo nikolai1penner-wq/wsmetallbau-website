@@ -1,33 +1,42 @@
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CtaBand } from "@/components/CtaBand";
-import { LeistungGrid } from "@/components/LeistungGrid";
+import { karteAus, LeistungGrid } from "@/components/LeistungGrid";
+import { PrivatSubnav } from "@/components/PrivatSubnav";
 import { privat } from "@/lib/leistungen";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "Geländer, Balkone & Treppen nach Maß in Herford",
+  title: "Lofttüren, Geländer, Treppen & Balkone nach Maß in Herford",
   description:
-    "Metallbau für Ihr Haus: Geländer, Balkone, Treppen, Loft-Türen, Vordächer, Tore und Carports. Aufmaß, Fertigung und Montage in Herford, Bielefeld und Umgebung.",
+    "Metallbau für Ihr Haus: Lofttüren, Geländer, Treppen, Vorstellbalkone, Vordächer, Fenstergitter, Tore und Carports. Aufmaß, Fertigung und Montage in Herford, Bielefeld und OWL.",
   path: "/privat/",
 });
 
 export default function Page() {
   return (
-    <div className="wrap pt-8">
-      <Breadcrumbs items={[{ name: "Privat", path: "/privat/" }]} />
-      <span className="tag privat">Für Bauherren</span>
-      <h1 className="h1 mt-4">Metallbau für Ihr Haus</h1>
-      <p className="lede mt-5">
-        Geländer, Balkone, Treppen und mehr, nach Maß gefertigt in Herford und montiert von unseren eigenen Teams.
-      </p>
-      <section className="mt-12">
-        <LeistungGrid items={privat} base="/privat/" />
+    <>
+      <PrivatSubnav />
+      <section className="pt-10 pb-12 sm:pt-14">
+        <div className="wrap grid gap-6">
+          <Breadcrumbs items={[{ name: "Privat", path: "/privat/" }]} />
+          <span className="eyebrow text-privat">Für Bauherren und Hausbesitzer</span>
+          <h1 className="h1 max-w-[900px]">Metallbau nach Maß für Ihr Haus</h1>
+          <p className="lede text-ink-2">
+            Lofttüren, Geländer, Treppen und Balkone, gefertigt in unserer Werkstatt in Herford und montiert von unseren eigenen Teams. Fotos und ungefähre Maße genügen für eine erste Einschätzung.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/anfrage/#privat" className="btn-dark">Kostenloses Angebot</Link>
+            <Link href="/privat/ratgeber/" className="link self-center">Kosten und Ablauf im Ratgeber</Link>
+          </div>
+        </div>
       </section>
-      <p className="mt-8">
-        Was kostet das? <Link href="/privat/ratgeber/" className="link">Kosten und Ablauf im Ratgeber</Link>
-      </p>
-      <CtaBand segment="privat" />
-    </div>
+      <section className="pb-20">
+        <div className="wrap">
+          <LeistungGrid items={privat.map((l) => karteAus(l, "/privat/"))} />
+        </div>
+      </section>
+      <CtaBand />
+    </>
   );
 }

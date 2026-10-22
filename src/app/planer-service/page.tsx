@@ -10,10 +10,10 @@ export const metadata = pageMeta({
 
 export default function Page() {
   return (
-    <div className="wrap pt-8">
+    <div className="wrap pt-10 pb-20">
       <Breadcrumbs items={[{ name: "Planer-Service", path: "/planer-service/" }]} />
-      <h1 className="h1">Planer-Service</h1>
-      <p className="lede mt-5">Standarddetails als DWG/DXF und PDF, Ausschreibungstexte für Treppen, Geländer und Balkone sowie technische Datenblätter. Der Downloadbereich ist in Vorbereitung.</p>
+      <h1 className="h1 mt-6">Planer-Service</h1>
+      <p className="lede mt-5 text-ink-2">Standarddetails als DWG/DXF und PDF, Ausschreibungstexte für Treppen, Geländer und Balkone sowie technische Datenblätter. Der Downloadbereich ist in Vorbereitung.</p>
     </div>
   );
 }

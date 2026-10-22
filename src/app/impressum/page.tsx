@@ -11,9 +11,9 @@ export const metadata = pageMeta({
 
 export default function Page() {
   return (
-    <div className="wrap pt-8">
+    <div className="wrap pt-10 pb-20">
       <Breadcrumbs items={[{ name: "Impressum", path: "/impressum/" }]} />
-      <h1 className="h1">Impressum</h1>
+      <h1 className="h1 mt-6">Impressum</h1>
       <div className="mt-6 grid max-w-[60ch] gap-4">
         <p>
           {site.legalName}

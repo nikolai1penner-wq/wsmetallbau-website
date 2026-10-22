@@ -1,56 +1,96 @@
 @import "tailwindcss";
 
-/* Farbwelt aus dem SEO-Konzept: Stahlblau, Signalgelb als Markierung, technisches Planblatt */
+/* Farben aus dem Logo (Petrol) und dem Screendesign: Anthrazit, kühler Grund, Petrol als Akzent */
 :root {
-  --paper: #eef1f4;
-  --sheet: #f8f9fb;
-  --ink: #1a2430;
-  --muted: #5a6878;
-  --line: #c9d1da;
-  --steel: #2f4a66;
-  --signal: #e8b100;
-  --signal-ink: #1a2430;
-  --b2c: #7a5a1c;
+  --ground: #eef1f1;
+  --sheet: #f7f9f9;
+  --anthracite: #243036;
+  --ink: #1e282d;
+  --ink-2: #3e4b53;
+  --muted: #51606a;
+  --line: #cbd3d5;
+  --line-strong: #8a979e;
+  --line-dark: #34434a;
+  --on-dark: #f5f8f8;
+  --on-dark-2: #d6dee1;
+  --on-dark-muted: #aebbc1;
+  --on-dark-soft: #c9d3d7;
+  --petrol: #00968a;
+  /* Buttons: dunkleres Petrol mit weißer Schrift (Kontrast > 4,5:1) */
+  --accent: #007a6e;
+  --accent-hover: #00665c;
+  --accent-ink: #ffffff;
+  /* Helles Petrol für Akzente auf dunklem Grund */
+  --accent-light: #4fc3b4;
+  --link: #2f5e7e;
+  --footer: #1e282d;
+  --privat: #007a6e;
 }
 
 @theme inline {
-  --color-paper: var(--paper);
+  --color-ground: var(--ground);
   --color-sheet: var(--sheet);
+  --color-anthracite: var(--anthracite);
   --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
   --color-muted: var(--muted);
   --color-line: var(--line);
-  --color-steel: var(--steel);
-  --color-signal: var(--signal);
+  --color-line-strong: var(--line-strong);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-2: var(--on-dark-2);
+  --color-on-dark-muted: var(--on-dark-muted);
+  --color-line-dark: var(--line-dark);
+  --color-on-dark-soft: var(--on-dark-soft);
+  --color-petrol: var(--petrol);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-accent-ink: var(--accent-ink);
+  --color-link: var(--link);
+  --color-footer: var(--footer);
+  --color-privat: var(--privat);
   --font-sans: var(--font-body);
   --font-display: var(--font-display);
   --font-mono: var(--font-mono);
 }
 
 body {
-  background: var(--paper);
+  background: var(--ground);
   color: var(--ink);
   font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 16px;
   line-height: 1.6;
 }
 
 @layer components {
-  .wrap { @apply mx-auto w-full max-w-[1120px] px-4 sm:px-6; }
-  .h1 { @apply font-display text-[clamp(2.2rem,6vw,3.8rem)] leading-[1.05] font-extrabold uppercase tracking-tight text-balance; }
-  .h2 { @apply font-display text-[clamp(1.5rem,3.4vw,2.1rem)] leading-tight font-bold uppercase text-balance; }
-  .h3 { @apply font-display text-lg leading-snug font-bold; }
-  .lede { @apply max-w-[62ch] text-lg; }
-  .label { @apply font-mono text-xs uppercase tracking-[0.09em] text-muted; }
-  .panel { @apply grid content-start gap-2 border border-line bg-sheet p-5; }
-  .btn { @apply inline-block bg-signal px-4 py-2.5 font-semibold text-ink transition-colors hover:bg-ink hover:text-sheet; }
-  .link { @apply text-steel underline underline-offset-4; }
-  .tag { @apply inline-block border border-current px-1.5 py-1 font-mono text-[0.7rem] uppercase tracking-wide; }
-  .tag.objektbau { color: var(--steel); }
-  .tag.privat { color: var(--b2c); }
-  .hl { background: linear-gradient(transparent 62%, var(--signal) 62%); }
+  .wrap { @apply mx-auto w-full max-w-[1280px] px-4 sm:px-8; }
+  .h1 {
+    @apply font-display uppercase text-balance;
+    font-weight: 800; font-stretch: 70%; line-height: .95;
+    font-size: clamp(2.125rem, 4.6vw, 3.5rem);
+  }
+  .h2 {
+    @apply font-display uppercase text-balance;
+    font-weight: 800; font-stretch: 75%; line-height: 1;
+    font-size: clamp(1.75rem, 3.2vw, 2.375rem);
+  }
+  .h2-sm { @apply font-display uppercase text-balance; font-weight: 800; font-stretch: 75%; line-height: 1; font-size: clamp(1.625rem, 2.8vw, 2rem); }
+  .h3 { @apply font-display text-balance; font-weight: 700; font-stretch: 85%; line-height: 1.1; font-size: clamp(1.25rem, 1.8vw, 1.5rem); }
+  .lede { @apply max-w-[580px] text-[17px]; }
+  .eyebrow { @apply font-mono text-[13px] uppercase tracking-[0.1em]; }
+  .label { @apply font-mono text-xs uppercase tracking-[0.08em] text-muted; }
+  .rule { border-top: 1.5px solid var(--anthracite); }
+  .btn { @apply inline-flex min-h-11 items-center justify-center bg-accent px-6 py-3 font-semibold text-accent-ink no-underline transition-colors hover:bg-[var(--accent-hover)]; }
+  .btn-dark { @apply inline-flex min-h-11 items-center justify-center bg-anthracite px-6 py-3 font-semibold text-on-dark no-underline transition-colors hover:bg-ink; }
+  .btn-ghost-light { @apply inline-flex min-h-11 items-center justify-center border-[1.5px] border-on-dark px-6 py-3 font-semibold text-on-dark no-underline hover:bg-on-dark hover:text-anthracite; }
+  .btn-ghost { @apply inline-flex min-h-11 items-center justify-center border-[1.5px] border-white px-6 py-3 font-semibold text-white no-underline hover:bg-white hover:text-accent; }
+  .link { @apply font-semibold text-link underline-offset-4 hover:underline; }
+  .chip { @apply border border-line-strong px-2.5 py-1.5 font-mono text-[13px]; }
+  .input { @apply min-h-11 w-full border border-line-strong bg-white px-3 py-2.5 text-ink; }
+  .section { @apply py-16 sm:py-24; }
+  .dark { @apply bg-anthracite text-on-dark; }
+  .band { @apply border-y border-line bg-sheet; }
+  /* Fotoplatzhalter, solange die Bilder noch nicht importiert sind */
+  .ph { background-color: #d3dadc; background-image: repeating-linear-gradient(135deg, rgba(36, 48, 54, .07) 0 2px, transparent 2px 14px); }
 }
 
-:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
-
-@layer components {
-  .input { @apply w-full border border-line bg-sheet px-3 py-2 text-ink focus:border-ink; }
-}
+:focus-visible { outline: 2px solid var(--petrol); outline-offset: 2px; }

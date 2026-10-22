@@ -10,10 +10,10 @@ export const metadata = pageMeta({
 
 export default function Page() {
   return (
-    <div className="wrap pt-8">
+    <div className="wrap pt-10 pb-20">
       <Breadcrumbs items={[{ name: "Privat", path: "/privat/" }, { name: "Ratgeber", path: "/privat/ratgeber/" }]} />
-      <h1 className="h1">Ratgeber</h1>
-      <p className="lede mt-5">Hier entstehen Artikel zu Kosten, Ablauf, Pflege und Genehmigung. Erste Themen: Geländer-Kosten pro Meter, Balkon anbauen, Stahltreppe Kosten.</p>
+      <h1 className="h1 mt-6">Ratgeber</h1>
+      <p className="lede mt-5 text-ink-2">Hier entstehen Artikel zu Kosten, Ablauf, Pflege und Genehmigung. Erste Themen: Geländer-Kosten pro Meter, Balkon anbauen, Stahltreppe Kosten.</p>
     </div>
   );
 }
