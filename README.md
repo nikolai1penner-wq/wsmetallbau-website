@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# wsmetall.de
 
-## Getting Started
+Neubau der Website von WSMetall (Metallbau, Herford) mit Next.js auf Vercel. Grundlage ist das SEO-Konzept
+(Hubs `/objektbau/` und `/privat/`, Referenzen als Fallstudien, Planer-Service, getrennte Anfrageformulare).
 
-First, run the development server:
+## Entwickeln
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Wo was gepflegt wird
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `src/lib/site.ts`: Firmenname, Telefon, Adresse, Zertifizierung, Einsatzgebiet (offene Punkte sind mit TODO markiert)
+- `src/lib/leistungen.ts`: alle Leistungsseiten beider Hubs
+- `src/lib/referenzen.ts`: Referenzprojekte (später Headless-CMS)
+- `next.config.ts`: 301-Weiterleitungen alter URLs (wsmetall.de-WordPress und ws-edelstahlbau.de)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Bilder von ws-edelstahlbau.de
 
-## Learn More
+Einmalig per GitHub Action „Bilder importieren“ (Actions-Tab, „Run workflow“) oder lokal mit
+`node scripts/import-bilder.mjs`. Das Skript lädt alle URLs aus `scripts/bilder-urls.txt`, verkleinert sie,
+speichert sie als WebP mit sprechenden Namen unter `public/bilder/` und füllt `src/data/bilder.json`.
 
-To learn more about Next.js, take a look at the following resources:
+## Umgebungsvariablen (Vercel)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Variable | Zweck |
+| --- | --- |
+| `RESEND_API_KEY` | Versand der Anfrageformulare per Resend |
+| `ANFRAGE_EMPFAENGER` | Empfänger, kommagetrennt |
+| `ANFRAGE_ABSENDER` | optional, Standard `Website <anfrage@wsmetall.de>` (Domain in Resend verifizieren) |
+| `NEXT_PUBLIC_SITE_URL` | optional, Standard `https://wsmetall.de` |

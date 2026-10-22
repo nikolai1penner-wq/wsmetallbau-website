@@ -1,69 +1,67 @@
-import Image from "next/image";
+import Link from "next/link";
+import { LeistungGrid } from "@/components/LeistungGrid";
+import { objektbau } from "@/lib/leistungen";
+import { site } from "@/lib/site";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <section className="wrap grid gap-6 pt-14 pb-10">
+        <span className="label">Metallbau · Stahlbau · Sonderkonstruktionen · Herford</span>
+        <h1 className="h1">
+          Metallbau aus Herford für <span className="hl">anspruchsvolle Projekte</span>
+        </h1>
+        <p className="lede">
+          Treppen, Balkonanlagen, Geländer und Sonderkonstruktionen aus Stahl und Edelstahl. Geplant, gefertigt und montiert
+          für Architekten, Bauträger und Bauherren in Ostwestfalen-Lippe und 100 km Umkreis.
+        </p>
+        <dl className="grid grid-cols-3 border-[1.5px] border-ink bg-sheet">
+          {site.facts.map((f) => (
+            <div key={f.label} className="border-r border-line p-3 last:border-r-0 sm:p-4">
+              <dt className="label">{f.label}</dt>
+              <dd className="font-display text-2xl font-extrabold sm:text-3xl">{f.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section aria-label="Einstieg nach Zielgruppe" className="wrap grid gap-4 md:grid-cols-2">
+        <Link href="/objektbau/" className="panel border-t-4 border-t-steel p-6 hover:border-ink sm:p-8">
+          <span className="tag objektbau w-fit">Objektbau</span>
+          <h2 className="h2">Für Planer &amp; Bauträger</h2>
+          <p className="text-muted">Sonderkonstruktionen, Balkonanlagen und Treppen in Serie. Mit Werkplanung, Detaillösungen und Planungsunterlagen.</p>
+          <span className="link mt-2">Zum Objektbau</span>
+        </Link>
+        <Link href="/privat/" className="panel border-t-4 border-t-[var(--b2c)] p-6 hover:border-ink sm:p-8">
+          <span className="tag privat w-fit">Privat</span>
+          <h2 className="h2">Für Bauherren &amp; Privatkunden</h2>
+          <p className="text-muted">Geländer, Balkone, Treppen, Loft-Türen und Vordächer nach Maß. Von Aufmaß bis Montage aus einer Hand.</p>
+          <span className="link mt-2">Zu den Leistungen für Ihr Haus</span>
+        </Link>
+      </section>
+
+      <section className="wrap mt-20 grid gap-6">
+        <h2 className="h2">Leistungen im Objektbau</h2>
+        <LeistungGrid items={objektbau} base="/objektbau/" />
+      </section>
+
+      <section className="wrap mt-20 grid gap-6">
+        <h2 className="h2">So läuft ein Projekt</h2>
+        <ol className="grid border border-line bg-sheet sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            ["Anfrage", "Pläne, Fotos oder Skizze schicken"],
+            ["Beratung & Aufmaß", "Machbarkeit, Details, Kostenrahmen"],
+            ["Fertigung", "im eigenen Betrieb in Herford"],
+            ["Montage", "durch unsere eigenen Teams"],
+          ].map(([t, d], i) => (
+            <li key={t} className="grid gap-1 border-b border-line p-5 last:border-b-0 sm:border-r lg:border-b-0">
+              <span className="label">Schritt {i + 1}</span>
+              <span className="font-semibold">{t}</span>
+              <span className="text-[0.95rem] text-muted">{d}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+    </>
   );
 }

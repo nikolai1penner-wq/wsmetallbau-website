@@ -1,0 +1,20 @@
+import { notFound } from "next/navigation";
+import { LeistungDetail } from "@/components/LeistungDetail";
+import { findLeistung, objektbau } from "@/lib/leistungen";
+import { pageMeta } from "@/lib/seo";
+
+export function generateStaticParams() {
+  return objektbau.map((l) => ({ slug: l.slug }));
+}
+
+export async function generateMetadata({ params }: PageProps<"/objektbau/[slug]">) {
+  const leistung = findLeistung(objektbau, (await params).slug);
+  if (!leistung) return {};
+  return pageMeta({ title: leistung.metaTitle, description: leistung.description, path: `/objektbau/${leistung.slug}/` });
+}
+
+export default async function Page({ params }: PageProps<"/objektbau/[slug]">) {
+  const leistung = findLeistung(objektbau, (await params).slug);
+  if (!leistung) notFound();
+  return <LeistungDetail leistung={leistung} segment="objektbau" />;
+}
