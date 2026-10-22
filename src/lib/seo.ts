@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { site } from "./site";
 
-export function pageMeta(opts: { title: string; description: string; path: string; noindex?: boolean }): Metadata {
+/** absolute: Title ohne den Zusatz „| W&S Metallbau“ aus dem Layout-Template */
+export function pageMeta(opts: { title: string; description: string; path: string; noindex?: boolean; absolute?: boolean }): Metadata {
   return {
-    title: opts.title,
+    title: opts.absolute ? { absolute: opts.title } : opts.title,
     description: opts.description,
     alternates: { canonical: opts.path },
     openGraph: { title: opts.title, description: opts.description, url: opts.path, type: "website" },

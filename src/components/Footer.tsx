@@ -24,6 +24,7 @@ export function Footer() {
             ["/referenzen/", "Referenzen"],
             ["/unternehmen/", "Über uns"],
             ["/einsatzgebiet/", "Einsatzgebiet"],
+            ["/karriere/", "Karriere"],
             ["/anfrage/", "Anfrage"],
             ["/impressum/", "Impressum"],
             ["/datenschutz/", "Datenschutz"],

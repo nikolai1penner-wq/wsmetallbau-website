@@ -18,6 +18,14 @@ export type Leistung = {
   preisAb?: string;
   varianten?: { label: string; hint: string; text: string }[];
   faq?: { q: string; a: string }[];
+  /** Optionale SEO-Texte aus dem Screendesign */
+  eyebrow?: string;
+  h1?: string;
+  /** Title komplett vorgegeben, ohne Markenzusatz aus dem Template */
+  metaTitleAbsolut?: boolean;
+  ratgeber?: { eyebrow: string; titel: string; bloecke: { title: string; text: string }[] };
+  galerieTitel?: string;
+  faqTitel?: string;
 };
 
 export const objektbau: Leistung[] = [
@@ -136,13 +144,28 @@ export const privat: Leistung[] = [
     slug: "loft-tueren-trennwaende",
     title: "Lofttüren und Trennwände aus Stahl und Glas",
     short: "Lofttüren",
-    metaTitle: "Lofttüren & Stahl-Glas-Trennwände nach Maß",
-    description: "Lofttüren, Schiebetüren und Stahl-Glas-Trennwände nach Maß, handgefertigt in Herford und montiert in ganz OWL.",
-    teaser: "Handgefertigt nach Maß, als Dreh- oder Schiebetür, Trennwand oder Festelement.",
+    eyebrow: "Lofttüren · Stahl-Glas-Türen · Trennwände",
+    h1: "Lofttüren nach Maß aus Herford",
+    metaTitle: "Lofttür nach Maß aus Herford | Stahl-Glas-Türen | W&S Metallbau",
+    metaTitleAbsolut: true,
+    // TODO: Preisrahmen „ab … €“ ergänzen, sobald bestätigt (Screendesign: „Preisrahmen ab [PREIS] €“)
+    description: "Handgefertigte Lofttüren und Trennwände aus Stahl und Glas, montiert in Herford, Bielefeld und OWL. Jetzt kostenloses Angebot anfragen.",
+    teaser: "Lofttüren und Stahl-Glas-Trennwände nach Maß, als Dreh- oder Schiebetür, für Wohnung, Büro und Praxis.",
     intro:
-      "Handgefertigt in Herford, als Drehtür, Schiebetür, Trennwand oder Festelement. Pulverbeschichtet in Ihrer Wunschfarbe nach RAL oder DB und von uns montiert.",
+      "Lofttüren verbinden industriellen Charme mit klassischem Flair. Wir fertigen jede Tür von Hand in Herford, als Drehtür, Schiebetür, Trennwand oder Festelement, pulverbeschichtet in Ihrer Wunschfarbe und montiert in Herford, Bielefeld und ganz OWL.",
     points: ["Dreh- und Schiebetüren, ein- oder zweiflügelig", "Festelemente und Trennwände", "Klarglas, satiniert oder Folie", "Pulverbeschichtung nach RAL oder DB"],
     counterpart: "/objektbau/loft-trennwaende-buero/",
+    ratgeber: {
+      eyebrow: "Ratgeber Lofttür",
+      titel: "Lofttür aus Stahl und Glas: was Sie wissen sollten",
+      bloecke: [
+        { title: "Material und Verarbeitung", text: "Rahmen und Sprossen bestehen aus schlanken Stahlprofilen, die wir zuschneiden, verschweißen und schleifen. Danach wird die Tür pulverbeschichtet. So entsteht die typische Optik einer Industrietür, stabil und langlebig." },
+        { title: "Glas und Farben", text: "Klarglas lässt Licht in Flur und Küche, satiniertes Glas oder Folie sorgt für Sichtschutz in Bad und Schlafzimmer. Beliebte Farben sind Tiefschwarz RAL 9005, Anthrazit RAL 7016 und Eisenglimmer DB 703." },
+        { title: "Aufmaß und Montage", text: "Wir messen die Öffnung bei Ihnen vor Ort, fertigen die Lofttür passgenau und bauen sie ein. Eine Lofttür passt in die meisten bestehenden Türöffnungen, auch ohne Umbau." },
+      ],
+    },
+    galerieTitel: "Unsere Lofttüren in Herford, Bielefeld und OWL",
+    faqTitel: "Häufige Fragen zu Lofttüren",
     varianten: [
       { label: "Drehtür einflügelig", hint: "Der Klassiker für Küche, Flur und Wohnzimmer", text: "Einflügelige Drehtür mit schmalen Stahlprofilen und Sprossen nach Wunsch. Passt in die meisten Standardöffnungen." },
       { label: "Drehtür zweiflügelig", hint: "Für breite Durchgänge ab etwa 140 cm", text: "Zweiflügelige Tür für breite Öffnungen, beide Flügel oder nur einer zu öffnen." },
@@ -150,9 +173,11 @@ export const privat: Leistung[] = [
       { label: "Trennwand und Festelement", hint: "Licht teilen, Raum trennen", text: "Feste Glaswand oder Kombination aus Tür und Seitenteilen, auch über die ganze Raumbreite." },
     ],
     faq: [
-      { q: "Was kostet eine Lofttür?", a: "Der Preis hängt von Größe, Türart, Glas und Farbe ab. Schicken Sie uns Maße und ein Foto der Öffnung, dann nennen wir Ihnen einen Preisrahmen." },
+      // TODO: konkreten Ab-Preis und Lieferzeit in Wochen eintragen, sobald bestätigt
+      { q: "Was kostet eine Lofttür?", a: "Der Preis hängt von Größe, Türart, Glas und Farbe ab. Schicken Sie uns Maße und ein Foto der Öffnung, dann nennen wir Ihnen einen Preisrahmen. Das verbindliche Angebot erhalten Sie nach dem Aufmaß." },
+      { q: "Wie lange dauert es bis zum Einbau?", a: "Das hängt von Ausführung und Auslastung ab. Nach dem Aufmaß nennen wir Ihnen einen festen Termin für Fertigung und Montage." },
       { q: "Passt eine Lofttür in meine bestehende Türöffnung?", a: "In den meisten Fällen ja. Wir fertigen nach Maß und prüfen die Öffnung beim Aufmaß." },
-      { q: "Welche Farben sind möglich?", a: "Jede RAL- oder DB-Farbe. Beliebt sind Tiefschwarz RAL 9005, Anthrazit RAL 7016 und Eisenglimmer DB 703." },
+      { q: "Welches Glas eignet sich für eine Lofttür?", a: "Für Innentüren verwenden wir Sicherheitsglas (ESG oder VSG). Klarglas für viel Licht, satiniertes Glas oder Folie für Sichtschutz." },
       { q: "In welchem Gebiet montieren Sie?", a: "In Herford, Bielefeld und ganz OWL, im Umkreis von etwa 100 km." },
     ],
   },

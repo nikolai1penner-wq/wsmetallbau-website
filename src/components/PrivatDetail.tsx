@@ -4,6 +4,7 @@ import type { Leistung } from "@/lib/leistungen";
 import { serviceJsonLd } from "@/lib/seo";
 import { AnfrageForm } from "./AnfrageForm";
 import { Breadcrumbs } from "./Breadcrumbs";
+import { Faq } from "./Faq";
 import { Foto } from "./Foto";
 import { Galerie } from "./Galerie";
 import { JsonLd } from "./JsonLd";
@@ -27,7 +28,8 @@ export function PrivatDetail({ leistung }: { leistung: Leistung }) {
         <div className="wrap flex flex-wrap items-stretch gap-12">
           <div className="flex min-w-0 flex-[1_1_480px] flex-col justify-center gap-6">
             <Breadcrumbs items={[{ name: "Privat", path: "/privat/" }, { name: leistung.short, path }]} />
-            <h1 className="h1">{leistung.title}</h1>
+            {leistung.eyebrow && <span className="eyebrow text-muted">{leistung.eyebrow}</span>}
+            <h1 className="h1">{leistung.h1 ?? leistung.title}</h1>
             <p className="lede text-ink-2">{leistung.intro}</p>
             <div className="flex flex-wrap items-center gap-5">
               <a href="#anfrage" className="btn-dark">Kostenloses Angebot</a>
@@ -80,7 +82,26 @@ export function PrivatDetail({ leistung }: { leistung: Leistung }) {
         </section>
       )}
 
-      <Galerie bilder={bilder.slice(1)} titel={loft ? "Lofttüren aus der Region" : "Ausgeführte Arbeiten"} />
+      {leistung.ratgeber && (
+        <section className="section">
+          <div className="wrap grid gap-8">
+            <div className="grid gap-3">
+              <span className="eyebrow text-muted">{leistung.ratgeber.eyebrow}</span>
+              <h2 className="h2">{leistung.ratgeber.titel}</h2>
+            </div>
+            <div className="grid gap-8 md:grid-cols-3">
+              {leistung.ratgeber.bloecke.map((b) => (
+                <div key={b.title} className="rule grid content-start gap-2.5 pt-5">
+                  <h3 className="h3">{b.title}</h3>
+                  <p className="text-ink-2">{b.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <Galerie bilder={bilder.slice(1)} titel={leistung.galerieTitel ?? "Ausgeführte Arbeiten"} />
 
       <section id="anfrage" className="dark section scroll-mt-4">
         <div className="wrap flex flex-wrap gap-14">
@@ -99,21 +120,7 @@ export function PrivatDetail({ leistung }: { leistung: Leistung }) {
         </div>
       </section>
 
-      {leistung.faq && (
-        <section className="section">
-          <div className="mx-auto grid max-w-[880px] gap-5 px-4 sm:px-8">
-            <h2 className="h2-sm">Häufige Fragen</h2>
-            <div className="rule">
-              {leistung.faq.map((f) => (
-                <details key={f.q} className="border-b border-line py-4">
-                  <summary className="min-h-7 cursor-pointer text-lg font-semibold">{f.q}</summary>
-                  <p className="mt-2.5 text-ink-2">{f.a}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      {leistung.faq && <Faq titel={leistung.faqTitel ?? "Häufige Fragen"} items={leistung.faq} />}
 
       {leistung.counterpart && (
         <p className="wrap pb-16">
@@ -122,15 +129,6 @@ export function PrivatDetail({ leistung }: { leistung: Leistung }) {
       )}
 
       <JsonLd data={serviceJsonLd({ name: leistung.title, description: leistung.description, path, audience: "Privatkunden" })} />
-      {leistung.faq && (
-        <JsonLd
-          data={{
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: leistung.faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-          }}
-        />
-      )}
     </>
   );
 }

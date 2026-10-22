@@ -16,11 +16,11 @@ const mono = IBM_Plex_Mono({ variable: "--font-mono", subsets: ["latin"], weight
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `Metallbau Herford – ${site.name}`,
+    default: `Metallbau Herford | Treppen, Balkone, Geländer | ${site.shortName}`,
     template: `%s | ${site.shortName}`,
   },
   description:
-    "Metallbau und Sonderkonstruktionen aus Herford: Treppen, Balkone, Geländer und Stahlbau für Architekten, Bauträger und Privatkunden in OWL und 100 km Umkreis.",
+    "Metallbau aus Herford für ganz OWL: Stahltreppen, Vorstellbalkone, Geländer, Lofttüren und Sonderkonstruktionen. 750+ Projekte. Jetzt anfragen.",
   openGraph: { locale: "de_DE", siteName: site.name, type: "website" },
 };
 

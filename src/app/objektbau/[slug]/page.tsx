@@ -10,7 +10,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/objektbau/[slug]">) {
   const leistung = findLeistung(objektbau, (await params).slug);
   if (!leistung) return {};
-  return pageMeta({ title: leistung.metaTitle, description: leistung.description, path: `/objektbau/${leistung.slug}/` });
+  return pageMeta({ title: leistung.metaTitle, absolute: leistung.metaTitleAbsolut, description: leistung.description, path: `/objektbau/${leistung.slug}/` });
 }
 
 export default async function Page({ params }: PageProps<"/objektbau/[slug]">) {

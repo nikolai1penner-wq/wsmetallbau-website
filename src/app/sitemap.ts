@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { stellen } from "@/lib/karriere";
 import { objektbau, privat } from "@/lib/leistungen";
 import { publishedReferenzen } from "@/lib/referenzen";
 import { site } from "@/lib/site";
@@ -15,6 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...publishedReferenzen.map((r) => `/referenzen/${r.slug}/`),
     "/unternehmen/",
     "/einsatzgebiet/",
+    "/karriere/",
+    ...stellen.map((s) => `/karriere/${s.slug}/`),
     "/anfrage/",
   ];
   return paths.map((p) => ({ url: `${site.url}${p}` }));

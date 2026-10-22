@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
+import { Faq, type FaqItem } from "@/components/Faq";
 import { Foto } from "@/components/Foto";
 import { LeistungGrid, type Karte } from "@/components/LeistungGrid";
 import { bilderFuer } from "@/lib/bilder";
@@ -7,12 +8,27 @@ import { publishedReferenzen } from "@/lib/referenzen";
 import { site } from "@/lib/site";
 
 const leistungen: Karte[] = [
-  { tag: "Objektbau", title: "Sonderkonstruktionen", text: "Stahl-, Edelstahl- und Glaskonstruktionen nach Ihren Plänen, von der Werkplanung bis zur Montage.", href: "/objektbau/sonderkonstruktionen/" },
-  { tag: "Objektbau · Privat", title: "Treppen", text: "Spindeltreppen, Innen- und Außentreppen aus Stahl, verzinkt oder pulverbeschichtet.", href: "/privat/treppen/", bildKey: "treppen" },
-  { tag: "Objektbau · Privat", title: "Balkone", text: "Vorstellbalkone und Balkonanlagen, selbsttragend und ohne Eingriff in die Dämmung.", href: "/objektbau/balkonanlagen/", bildKey: "balkone" },
-  { tag: "Objektbau · Privat", title: "Geländer und Glas", text: "Edelstahl-, Stahl- und Ganzglasgeländer für Balkon, Treppe und französische Fenster.", href: "/privat/gelaender/", bildKey: "gelaender" },
-  { tag: "Privat · Gewerbe", title: "Lofttüren und Trennwände", text: "Handgefertigt nach Maß, als Dreh- oder Schiebetür, Trennwand oder Festelement.", href: "/privat/loft-tueren-trennwaende/", bildKey: "loft-tueren-trennwaende" },
+  { tag: "Objektbau", title: "Sonderkonstruktionen", text: "Stahlkonstruktionen und Sonderanfertigungen aus Stahl, Edelstahl und Glas nach Ihren Plänen, von der Werkplanung bis zur Montage.", href: "/objektbau/sonderkonstruktionen/" },
+  { tag: "Objektbau · Privat", title: "Treppen", text: "Stahltreppen, Spindeltreppen, Innen- und Außentreppen nach DIN 18065, feuerverzinkt oder pulverbeschichtet.", href: "/privat/treppen/", bildKey: "treppen" },
+  { tag: "Objektbau · Privat", title: "Balkone", text: "Vorstellbalkone und Balkonanlagen für Neubau und Sanierung, selbsttragend auf Stützen und ohne Eingriff in die Dämmung.", href: "/objektbau/balkonanlagen/", bildKey: "balkone" },
+  { tag: "Objektbau · Privat", title: "Geländer und Glas", text: "Edelstahlgeländer, Stahlgeländer und Ganzglasgeländer für Balkon, Treppe, Terrasse und französischen Balkon.", href: "/privat/gelaender/", bildKey: "gelaender" },
+  { tag: "Privat · Gewerbe", title: "Lofttüren und Trennwände", text: "Lofttüren und Stahl-Glas-Trennwände nach Maß, als Dreh- oder Schiebetür, für Wohnung, Büro und Praxis.", href: "/privat/loft-tueren-trennwaende/", bildKey: "loft-tueren-trennwaende" },
   { tag: "Objektbau", title: "Stahlbau und Industrie", text: "Bühnen, Podeste, Überdachungen und Stahlkonstruktionen für Gewerbe und Industrie.", href: "/objektbau/stahlbau-industrie/" },
+];
+
+const ueberUns = [
+  { title: "Metallbau nach Maß seit über 20 Jahren", text: "Wir fertigen Stahltreppen und Spindeltreppen, Vorstellbalkone, Edelstahl- und Ganzglasgeländer, Lofttüren und Sonderkonstruktionen, die es nicht von der Stange gibt. Mehr als 750 Projekte haben wir in Ostwestfalen-Lippe umgesetzt, vom Einfamilienhaus bis zur Balkonanlage im Mehrfamilienhaus." },
+  { title: "Für Architekten und Bauträger", text: "Werkplanung, Fertigung in eigener Werkstatt und Montage kommen aus einer Hand. Wir liefern Details und Ausschreibungstexte für Ihre Planung und halten Termine auch bei Serienleistungen." },
+  { title: "Für private Bauherren", text: "Wir beraten vor Ort, nehmen Maß und bauen ein. Mit ein paar Fotos und ungefähren Maßen geben wir Ihnen vorab eine erste Einschätzung, womit Sie rechnen können." },
+];
+
+// TODO: Angebotsfrist für Objektprojekte („innerhalb von X Werktagen“) ergänzen, sobald bestätigt
+const faq: FaqItem[] = [
+  { q: "Was macht ein Metallbauer?", a: "Ein Metallbauer plant, fertigt und montiert Bauteile aus Stahl, Edelstahl und Aluminium, zum Beispiel Treppen, Geländer, Balkone, Türen, Vordächer und Stahlkonstruktionen. Bei W&S kommen Fertigung und Montage aus einer Hand." },
+  { q: "Welche Metallbauarbeiten übernehmen Sie in Herford und Bielefeld?", a: "Stahltreppen und Spindeltreppen, Vorstellbalkone und Balkonanlagen, Edelstahl-, Stahl- und Ganzglasgeländer, Lofttüren und Trennwände, Fenstergitter, Überdachungen und Sonderkonstruktionen." },
+  { q: "Arbeiten Sie auch für Architekten und Bauträger?", a: "Ja. Für Objektprojekte liefern wir Details und Ausschreibungstexte, kalkulieren nach Leistungsverzeichnis und montieren mit eigenen Teams." },
+  { q: "Was kostet eine Metallbauarbeit?", a: "Das hängt von Material, Größe, Oberfläche und Montageaufwand ab. Eine erste Einschätzung geben wir oft schon anhand von Fotos und Maßen, ein verbindliches Angebot erhalten Sie nach dem Aufmaß." },
+  { q: "Wie schnell erhalte ich ein Angebot?", a: "Wir melden uns innerhalb eines Werktags. Für Objektprojekte mit Plänen oder Leistungsverzeichnis nennen wir Ihnen nach Sichtung der Unterlagen einen Termin für das Angebot." },
 ];
 
 const schritte = [
@@ -23,22 +39,18 @@ const schritte = [
 ];
 
 export default function Home() {
-  const kennzahlen = [
-    ...site.facts,
-    site.certification
-      ? { value: site.certification.norm, label: `Ausführungsklasse ${site.certification.klasse}` }
-      : { value: "1 Hand", label: "Fertigung und Montage" },
-  ];
+  const [projekte, jahre, umkreis] = site.facts;
+  const kennzahlen = [projekte, jahre, { value: "1 Partner", label: "Planung, Fertigung, Montage" }, umkreis];
   const referenz = publishedReferenzen[0];
   return (
     <>
       <section className="dark pt-10 sm:pt-14">
         <div className="wrap flex flex-wrap items-end gap-12">
           <div className="flex min-w-0 flex-[1_1_480px] flex-col gap-6 pb-4 sm:pb-16">
-            <span className="eyebrow text-on-dark-muted">Metallbau · Stahlbau · Sonderkonstruktionen</span>
-            <h1 className="h1">Metallbau aus Herford, vom Geländer bis zur Sonder&shy;konstruktion</h1>
+            <span className="eyebrow text-on-dark-muted">Metallbau in Herford · Ostwestfalen-Lippe</span>
+            <h1 className="h1">Metallbau in Herford: Treppen, Balkone, Geländer und Sonder&shy;konstruktionen</h1>
             <p className="lede text-on-dark-2">
-              Eigene Fertigung und eigene Montage für Objektbau und private Bauherren in Ostwestfalen-Lippe und 100 km Umkreis.
+              W&amp;S Metallbau plant, fertigt und montiert Konstruktionen aus Stahl, Edelstahl und Glas. Für Architekten, Bauträger und private Bauherren in Herford, Bielefeld und ganz OWL.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link href="/objektbau/" className="btn">Für Architekten &amp; Bauträger</Link>
@@ -74,8 +86,8 @@ export default function Home() {
             <ul className="grid gap-1 pl-5 text-on-dark-2 [list-style:square]">
               <li>Balkonanlagen, Treppen und Geländer in Serie</li>
               <li>Sonderkonstruktionen in Stahl, Edelstahl und Glas</li>
-              <li>Planungsunterlagen und Ausschreibungstexte</li>
-              <li>Rückmeldung zu Ihrer Projektanfrage in 24 Stunden</li>
+              <li>CAD-Details und Ausschreibungstexte für Ihre Planung</li>
+              <li>Rückmeldung zu Ihrer Projektanfrage innerhalb eines Werktags</li>
             </ul>
             <span className="mt-2 font-semibold">Zum Objektbau →</span>
           </Link>
@@ -95,8 +107,25 @@ export default function Home() {
 
       <section className="pb-16 sm:pb-24">
         <div className="wrap grid gap-8">
+          <div className="grid gap-3">
+            <span className="eyebrow text-muted">Über uns</span>
+            <h2 className="h2">Ihr Metallbauer für Herford, Bielefeld und OWL</h2>
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            {ueberUns.map((b) => (
+              <div key={b.title} className="rule grid content-start gap-2.5 pt-5">
+                <h3 className="h3">{b.title}</h3>
+                <p className="text-ink-2">{b.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-16 sm:pb-24">
+        <div className="wrap grid gap-8">
           <div className="rule flex flex-wrap items-end justify-between gap-4 pt-7">
-            <h2 className="h2">Leistungen</h2>
+            <h2 className="h2">Metallbau-Leistungen im Überblick</h2>
             <p className="max-w-[520px] text-muted">Jede Leistung gibt es mit technischen Angaben für den Objektbau und mit Galerie und Anfrage für private Bauherren.</p>
           </div>
           <LeistungGrid items={leistungen} />
@@ -121,8 +150,8 @@ export default function Home() {
         <div className="wrap flex flex-wrap gap-12">
           <div className="flex min-w-0 flex-[1_1_400px] flex-col gap-4">
             <span className="eyebrow text-muted">Planer-Service</span>
-            <h2 className="h2">Unterlagen für Ihre Planung</h2>
-            <p className="max-w-[480px] text-ink-2">Standarddetails, Ausschreibungstexte und Datenblätter für Architekten und Fachplaner. Auf Wunsch beraten wir schon in der Entwurfsplanung.</p>
+            <h2 className="h2">CAD-Details und Ausschreibungstexte für Planer</h2>
+            <p className="max-w-[480px] text-ink-2">Standarddetails als DWG und PDF, Ausschreibungstexte für Treppen, Balkone und Geländer sowie technische Datenblätter, kostenlos für Architekten und Fachplaner. Auf Wunsch beraten wir Sie schon in den Leistungsphasen 3 bis 5 zu Machbarkeit, Details und Kosten.</p>
             <Link href="/planer-service/" className="btn-dark self-start">Zum Planer-Service</Link>
           </div>
           <ul className="rule min-w-0 flex-[1_1_520px]">
@@ -142,7 +171,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="dark section">
+      <section id="ablauf" className="dark section scroll-mt-4">
         <div className="wrap grid gap-10">
           <h2 className="h2">So läuft Ihr Projekt</h2>
           <ol className="grid border-t-[1.5px] border-line-strong sm:grid-cols-2 lg:grid-cols-4">
@@ -162,7 +191,8 @@ export default function Home() {
           <Umkreis />
           <div className="flex min-w-0 flex-[1_1_420px] flex-col gap-5">
             <span className="eyebrow text-muted">Einsatzgebiet</span>
-            <h2 className="h2">Herford, OWL und 100 km Umkreis</h2>
+            <h2 className="h2">Metallbau in Herford, Bielefeld und 100 km Umkreis</h2>
+            <p className="text-ink-2">Wir montieren mit eigenen Teams in ganz Ostwestfalen-Lippe. Objektprojekte übernehmen wir bis Hannover, Münster und Paderborn.</p>
             <div className="grid gap-3.5 text-base">
               <p><strong>Bis 30 km:</strong> {site.serviceArea.kern.join(", ")}</p>
               <p><strong>Bis 70 km:</strong> {site.serviceArea.erweitert.join(", ")}</p>
@@ -172,6 +202,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Faq titel="Häufige Fragen zum Metallbau" items={faq} className="section pt-0" />
 
       <CtaBand />
     </>

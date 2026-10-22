@@ -6,10 +6,13 @@ export async function POST(request: Request) {
   const form = await request.formData();
   if (form.get("website")) return Response.json({ ok: true }); // Honeypot
 
-  const art = form.get("art") === "projekt" ? "Projektanfrage" : "Privatanfrage";
+  const art = { projekt: "Projektanfrage", bewerbung: "Bewerbung" }[String(form.get("art"))] ?? "Privatanfrage";
   const email = String(form.get("email") ?? "");
-  if (!email.includes("@") || !form.get("name") || !form.get("datenschutz")) {
-    return Response.json({ error: "Bitte Name, E-Mail und Einwilligung angeben." }, { status: 400 });
+  // Bewerbungen kommen nur mit Telefonnummer, Anfragen mit E-Mail
+  const kontakt = art === "Bewerbung" ? String(form.get("telefon") ?? "").trim().length >= 6 : email.includes("@");
+  if (!kontakt || !form.get("name") || !form.get("datenschutz")) {
+    const was = art === "Bewerbung" ? "Name, Telefonnummer" : "Name, E-Mail";
+    return Response.json({ error: `Bitte ${was} und Einwilligung angeben.` }, { status: 400 });
   }
 
   const files = form.getAll("dateien").filter((f): f is File => f instanceof File && f.size > 0);
@@ -35,8 +38,8 @@ export async function POST(request: Request) {
     body: JSON.stringify({
       from: process.env.ANFRAGE_ABSENDER ?? "Website <anfrage@wsmetall.de>",
       to: to.split(","),
-      reply_to: email,
-      subject: `${art}: ${form.get("projekt") ?? form.get("leistung") ?? form.get("name")}`,
+      ...(email.includes("@") ? { reply_to: email } : {}),
+      subject: `${art}: ${form.get("projekt") ?? form.get("leistung") ?? form.get("stelle") ?? form.get("name")}`,
       text: lines.join("\n"),
       attachments: await Promise.all(
         files.map(async (f) => ({ filename: f.name, content: Buffer.from(await f.arrayBuffer()).toString("base64") })),

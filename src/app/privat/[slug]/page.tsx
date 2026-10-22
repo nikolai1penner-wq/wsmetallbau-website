@@ -10,7 +10,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/privat/[slug]">) {
   const leistung = findLeistung(privat, (await params).slug);
   if (!leistung) return {};
-  return pageMeta({ title: leistung.metaTitle, description: leistung.description, path: `/privat/${leistung.slug}/` });
+  return pageMeta({ title: leistung.metaTitle, absolute: leistung.metaTitleAbsolut, description: leistung.description, path: `/privat/${leistung.slug}/` });
 }
 
 export default async function Page({ params }: PageProps<"/privat/[slug]">) {

@@ -2,7 +2,6 @@ import Link from "next/link";
 import type { Leistung } from "@/lib/leistungen";
 import { objektbau } from "@/lib/leistungen";
 import { serviceJsonLd } from "@/lib/seo";
-import { site } from "@/lib/site";
 import { AnfrageForm } from "./AnfrageForm";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { JsonLd } from "./JsonLd";
@@ -21,12 +20,11 @@ export function ObjektbauDetail({ leistung }: { leistung: Leistung }) {
               <p className="lede text-on-dark-2">{leistung.intro}</p>
               <ul className="flex flex-wrap gap-2">
                 {leistung.spec?.split(" · ").map((s) => <li key={s} className="chip">{s}</li>)}
-                {site.certification && <li className="chip">{site.certification.norm} {site.certification.klasse}</li>}
               </ul>
             </div>
             <div className="flex min-w-0 flex-[1_1_400px] flex-col gap-4 bg-sheet p-6 text-ink sm:p-8">
               <span className="label">Projektanfrage</span>
-              <h2 className="font-display text-2xl leading-tight font-bold">Rückmeldung innerhalb von 24 Stunden</h2>
+              <h2 className="font-display text-2xl leading-tight font-bold">Rückmeldung innerhalb eines Werktags</h2>
               <AnfrageForm variante="projekt-kurz" />
             </div>
           </div>
@@ -42,7 +40,7 @@ export function ObjektbauDetail({ leistung }: { leistung: Leistung }) {
           </div>
           <div className="grid content-start gap-4 bg-sheet p-6">
             <span className="label">In Vorbereitung</span>
-            <p className="text-ink-2">Referenzen mit technischen Daten, Standarddetails zum Download und Angaben zu Normen und Ausführungsklasse folgen.</p>
+            <p className="text-ink-2">Referenzen mit technischen Daten, Standarddetails zum Download folgen.</p>
             {leistung.counterpart && (
               <p>Für Ihr eigenes Haus? <Link href={leistung.counterpart} className="link">Zur Seite für Privatkunden</Link></p>
             )}

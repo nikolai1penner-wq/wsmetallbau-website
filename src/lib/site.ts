@@ -5,7 +5,7 @@ export const site = {
   // TODO: einheitlichen Firmennamen festlegen (Website, Impressum und Verzeichnisse weichen ab)
   name: "WS Metallbau und Bauelemente",
   legalName: "W&S Edelstahlbau und Bauelemente GbR",
-  shortName: "WS Metallbau",
+  shortName: "W&S Metallbau",
   // TODO: feste Telefonnummer eintragen, dann erscheint sie in Kopf, Fuß und JSON-LD
   phone: "",
   email: "info@wsmetall.de",
