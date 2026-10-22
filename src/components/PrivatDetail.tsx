@@ -34,7 +34,7 @@ export function PrivatDetail({ leistung }: { leistung: Leistung }) {
               {leistung.preisAb && (
                 <div className="flex flex-col leading-tight">
                   <span className="label">Preisrahmen</span>
-                  <span className="font-display text-2xl font-extrabold [font-stretch:80%]">ab {leistung.preisAb} € inkl. Montage</span>
+                  <span className="font-display text-2xl font-bold">ab {leistung.preisAb} € inkl. Montage</span>
                 </div>
               )}
             </div>

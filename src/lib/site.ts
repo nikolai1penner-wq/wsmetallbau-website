@@ -1,4 +1,4 @@
-// Zentrale Firmendaten. Name, Telefon und EN-1090-Angaben sind noch offen
+// Zentrale Firmendaten. Name und Telefon sind noch offen
 // (siehe SEO-Konzept, Abschnitt 12) und überall nur hier zu pflegen.
 export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://wsmetall.de",
@@ -22,8 +22,6 @@ export const site = {
   kammerNr: "71293017",
   berufsbezeichnung: "Metallbau",
   ustId: "DE355524979",
-  // TODO: Zertifizierung bestätigen, z. B. { norm: "EN 1090", klasse: "EXC2" }
-  certification: null as null | { norm: string; klasse: string },
   facts: [
     { value: "750+", label: "umgesetzte Projekte" },
     { value: "20+", label: "Jahre Erfahrung" },

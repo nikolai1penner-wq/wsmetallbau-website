@@ -8,7 +8,7 @@ export function Logo({ small = false }: { small?: boolean }) {
         <polygon points="52,40 68,40 92,0 76,0" fill="var(--petrol)" />
         <polygon points="78,40 120,40 120,0 102,0" fill="var(--petrol)" />
       </svg>
-      <span className={`font-display font-extrabold tracking-[0.04em] text-white ${small ? "text-[22px]" : "text-[28px]"}`}>W &amp; S</span>
+      <span className={`font-display font-bold tracking-[0.04em] text-white ${small ? "text-[22px]" : "text-[28px]"}`}>W &amp; S</span>
     </span>
   );
 }

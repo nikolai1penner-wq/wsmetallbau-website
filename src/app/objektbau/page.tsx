@@ -44,7 +44,7 @@ export default function Page() {
             </div>
             <div className="flex min-w-0 flex-[1_1_400px] flex-col gap-4 bg-sheet p-6 text-ink sm:p-8">
               <span className="label">Projektanfrage</span>
-              <h2 className="font-display text-2xl leading-tight font-extrabold [font-stretch:80%]">Rückmeldung innerhalb von 24 Stunden</h2>
+              <h2 className="font-display text-2xl leading-tight font-bold">Rückmeldung innerhalb von 24 Stunden</h2>
               <AnfrageForm variante="projekt-kurz" />
             </div>
           </div>

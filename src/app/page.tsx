@@ -60,7 +60,7 @@ export default function Home() {
           {kennzahlen.map((k, i) => (
             <div key={k.label} className={`flex flex-col-reverse gap-0.5 border-line py-4 sm:py-6 ${i % 2 ? "border-l pl-4 sm:pl-6" : "pr-4"} ${i < 2 ? "border-b lg:border-b-0" : ""} ${i === 2 ? "lg:border-l lg:pl-6" : ""}`}>
               <dt className="text-[13px] text-muted sm:text-[15px]">{k.label}</dt>
-              <dd className="font-display text-[26px] leading-none font-extrabold [font-stretch:75%] sm:text-[32px]">{k.value}</dd>
+              <dd className="font-display text-[26px] leading-none font-bold sm:text-[32px]">{k.value}</dd>
             </div>
           ))}
         </dl>
@@ -130,7 +130,7 @@ export default function Home() {
               ["DWG", "Standarddetails Vorstellbalkon"],
               ["PDF", "Ausschreibungstext Stahltreppe"],
               ["PDF", "Ausschreibungstext Glasgeländer"],
-              ["PDF", "Datenblätter und Zertifikate"],
+              ["PDF", "Datenblatt Ganzglasgeländer"],
             ].map(([typ, name]) => (
               <li key={name} className="flex min-h-11 items-center gap-5 border-b border-line py-4">
                 <span className="min-w-11 bg-anthracite px-2 py-1 text-center font-mono text-xs text-on-dark">{typ}</span>
@@ -148,7 +148,7 @@ export default function Home() {
           <ol className="grid border-t-[1.5px] border-line-strong sm:grid-cols-2 lg:grid-cols-4">
             {schritte.map((s, i) => (
               <li key={s.title} className="flex flex-col gap-2.5 pt-6 pr-6 pb-2">
-                <span className="font-display text-[40px] leading-none font-extrabold text-accent-light [font-stretch:70%]">{i + 1}</span>
+                <span className="font-display text-[40px] leading-none font-bold text-accent-light">{i + 1}</span>
                 <h3 className="text-xl font-semibold">{s.title}</h3>
                 <p className="text-[15px] text-on-dark-soft">{s.text}</p>
               </li>

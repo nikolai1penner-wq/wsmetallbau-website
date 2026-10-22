@@ -64,17 +64,17 @@ body {
 @layer components {
   .wrap { @apply mx-auto w-full max-w-[1280px] px-4 sm:px-8; }
   .h1 {
-    @apply font-display uppercase text-balance;
-    font-weight: 800; font-stretch: 70%; line-height: .95;
-    font-size: clamp(2.125rem, 4.6vw, 3.5rem);
+    @apply font-display text-balance;
+    font-weight: 700; line-height: 1.15; letter-spacing: -.005em;
+    font-size: clamp(1.75rem, 3.2vw, 2.5rem);
   }
   .h2 {
-    @apply font-display uppercase text-balance;
-    font-weight: 800; font-stretch: 75%; line-height: 1;
-    font-size: clamp(1.75rem, 3.2vw, 2.375rem);
+    @apply font-display text-balance;
+    font-weight: 700; line-height: 1.1;
+    font-size: clamp(1.625rem, 2.8vw, 2.375rem);
   }
-  .h2-sm { @apply font-display uppercase text-balance; font-weight: 800; font-stretch: 75%; line-height: 1; font-size: clamp(1.625rem, 2.8vw, 2rem); }
-  .h3 { @apply font-display text-balance; font-weight: 700; font-stretch: 85%; line-height: 1.1; font-size: clamp(1.25rem, 1.8vw, 1.5rem); }
+  .h2-sm { @apply font-display text-balance; font-weight: 700; line-height: 1.1; font-size: clamp(1.5rem, 2.4vw, 2rem); }
+  .h3 { @apply font-display text-balance; font-weight: 700; line-height: 1.15; font-size: clamp(1.25rem, 1.7vw, 1.375rem); }
   .lede { @apply max-w-[580px] text-[17px]; }
   .eyebrow { @apply font-mono text-[13px] uppercase tracking-[0.1em]; }
   .label { @apply font-mono text-xs uppercase tracking-[0.08em] text-muted; }

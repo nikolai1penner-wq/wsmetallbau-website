@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { Barlow, Barlow_Semi_Condensed, IBM_Plex_Mono } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
@@ -8,9 +8,9 @@ import { localBusinessJsonLd } from "@/lib/seo";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-// Archivo als variable Schrift mit Breitenachse, damit die schmalen Versalien (font-stretch 70–85 %) echt sind
-const display = Archivo({ variable: "--font-display", subsets: ["latin"], axes: ["wdth"] });
-const body = IBM_Plex_Sans({ variable: "--font-body", subsets: ["latin"], weight: ["400", "500", "600"] });
+// Barlow: Überschriften in Barlow Semi Condensed fett, Fließtext in Barlow (Nikolai, 22.10.)
+const display = Barlow_Semi_Condensed({ variable: "--font-display", subsets: ["latin"], weight: ["600", "700"] });
+const body = Barlow({ variable: "--font-body", subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const mono = IBM_Plex_Mono({ variable: "--font-mono", subsets: ["latin"], weight: ["400", "500"] });
 
 export const metadata: Metadata = {

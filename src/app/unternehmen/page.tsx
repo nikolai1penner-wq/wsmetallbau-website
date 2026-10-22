@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export const metadata = pageMeta({
   title: "Über uns: Metallbaubetrieb in Herford",
-  description: `${site.name}: Fertigung, Montageteams und Zertifizierung. Über 20 Jahre Metallbau aus Herford für Projekte in OWL.`,
+  description: `${site.name}: Fertigung, Montageteams und Ansprechpartner. Über 20 Jahre Metallbau aus Herford für Projekte in OWL.`,
   path: "/unternehmen/",
 });
 
@@ -24,12 +24,8 @@ export default function Page() {
           <p className="text-muted">Angaben zu Halle, Maschinen und Kapazität folgen.</p>
         </div>
         <div className="grid content-start gap-2 bg-sheet p-6">
-          <h2 className="h3">Zertifizierung</h2>
-          <p className="text-muted">
-            {site.certification
-              ? `Zertifiziert nach ${site.certification.norm}, Ausführungsklasse ${site.certification.klasse}.`
-              : "Angaben zur Zertifizierung folgen."}
-          </p>
+          <h2 className="h3">Erfahrung</h2>
+          <p className="text-muted">Seit über 20 Jahren Metallbau, mehr als 750 Projekte in Ostwestfalen-Lippe.</p>
         </div>
         <div className="grid content-start gap-2 bg-sheet p-6">
           <h2 className="h3">Ansprechpartner</h2>

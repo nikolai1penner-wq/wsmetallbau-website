@@ -26,6 +26,21 @@ const zaehler = {};
 const bilder = [];
 const fehler = [];
 
+// Der Bildserver bricht lange Verbindungen ab, daher jedes Bild mit neuer Verbindung und bis zu 4 Versuchen
+async function laden(url) {
+  for (let versuch = 1; versuch <= 4; versuch++) {
+    try {
+      const res = await fetch(url, { headers: { connection: "close" }, signal: AbortSignal.timeout(60_000) });
+      if (res.ok) return Buffer.from(await res.arrayBuffer());
+      if (res.status < 500) return null;
+    } catch (e) {
+      console.warn(`Versuch ${versuch} fehlgeschlagen: ${url} (${e.cause?.code ?? e.message})`);
+    }
+    await new Promise((r) => setTimeout(r, 2000 * versuch));
+  }
+  return null;
+}
+
 for (const url of urls) {
   const teile = decodeURIComponent(new URL(url).pathname).split("/");
   const quelle = teile.at(-2);
@@ -33,13 +48,13 @@ for (const url of urls) {
   const meta = ordner[quelle];
   if (!meta) { fehler.push(`unbekannter Ordner ${quelle}: ${url}`); continue; }
 
-  const res = await fetch(url);
-  if (!res.ok) { fehler.push(`${res.status} ${url}`); continue; }
+  const daten = await laden(url);
+  if (!daten) { fehler.push(`nicht geladen: ${url}`); continue; }
   const nr = (zaehler[meta.name] = (zaehler[meta.name] ?? 0) + 1);
   const datei = `${meta.name}-${String(nr).padStart(2, "0")}.webp`;
   const ziel = path.join(root, "public/bilder", meta.leistung, datei);
   await mkdir(path.dirname(ziel), { recursive: true });
-  const info = await sharp(Buffer.from(await res.arrayBuffer()))
+  const info = await sharp(daten)
     .rotate()
     .resize({ width: 2000, height: 2000, fit: "inside", withoutEnlargement: true })
     .webp({ quality: 80 })
@@ -50,4 +65,5 @@ for (const url of urls) {
 
 await writeFile(path.join(root, "src/data/bilder.json"), JSON.stringify(bilder, null, 2) + "\n");
 console.log(`${bilder.length} Bilder importiert`);
-if (fehler.length) { console.error(fehler.join("\n")); process.exitCode = 1; }
+if (fehler.length) console.error(`${fehler.length} Fehler:\n${fehler.join("\n")}`);
+if (!bilder.length) process.exitCode = 1;
