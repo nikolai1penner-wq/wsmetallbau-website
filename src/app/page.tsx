@@ -80,7 +80,7 @@ export default function Home() {
         <ul className="wrap grid sm:grid-cols-2 lg:grid-cols-4">
           {vorteile.map((v, i) => (
             <li key={v.title} className={`flex flex-col gap-1.5 border-line py-7 sm:px-6 ${i ? "border-t sm:border-t-0" : ""} ${i % 2 ? "sm:border-l" : "sm:pl-0"} ${i === 2 ? "lg:border-l lg:pl-6" : ""}`}>
-              <span aria-hidden className="mb-1 block h-[3px] w-8 bg-petrol" />
+              <span aria-hidden className="mb-1 block h-[3px] w-8 bg-accent" />
               <h2 className="font-display text-xl font-bold">{v.title}</h2>
               <p className="text-[15px] text-ink-2">{v.text}</p>
             </li>

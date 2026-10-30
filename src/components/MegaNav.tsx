@@ -53,7 +53,7 @@ export function MegaNav({ menus, links, teaserBilder }: Props) {
             <div
               id={`mega-${i}`}
               hidden={offen !== i}
-              className="absolute inset-x-0 top-full z-50 border-t-[3px] border-petrol bg-sheet text-ink shadow-[0_18px_40px_rgba(36,48,54,.18)]"
+              className="absolute inset-x-0 top-full z-50 border-t-[3px] border-accent bg-sheet text-ink shadow-[0_18px_40px_rgba(36,48,54,.18)]"
             >
               <div className="wrap flex flex-wrap gap-8 py-7 font-normal">
                 <div className="flex min-w-0 flex-[2_1_520px] flex-col gap-2.5">
@@ -64,7 +64,7 @@ export function MegaNav({ menus, links, teaserBilder }: Props) {
                   <ul className="grid grid-cols-2 gap-x-4 gap-y-0.5">
                     {m.leistungen.map((l) => (
                       <li key={l.href}>
-                        <Link href={l.href} className="flex flex-col gap-0.5 border-l-2 border-transparent px-3.5 py-3 text-ink no-underline hover:border-petrol hover:bg-white focus-visible:border-petrol">
+                        <Link href={l.href} className="flex flex-col gap-0.5 border-l-2 border-transparent px-3.5 py-3 text-ink no-underline hover:border-accent hover:bg-white focus-visible:border-accent">
                           <span className="font-display text-[19px] leading-tight font-bold">{l.title}</span>
                           <span className="text-sm leading-snug text-muted">{l.text}</span>
                         </Link>
@@ -137,7 +137,7 @@ export function MobileNav({ menus, links }: Omit<Props, "teaserBilder">) {
             <ul className="grid gap-1 pb-4">
               {m.leistungen.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="flex flex-col border-l-2 border-petrol py-2 pl-3 text-on-dark no-underline">
+                  <Link href={l.href} className="flex flex-col border-l-2 border-accent-light py-2 pl-3 text-on-dark no-underline">
                     <span className="font-display text-[17px] font-bold">{l.title}</span>
                     <span className="text-sm font-normal text-on-dark-muted">{l.text}</span>
                   </Link>

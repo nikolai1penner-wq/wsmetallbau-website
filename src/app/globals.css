@@ -1,32 +1,32 @@
 @import "tailwindcss";
 
-/* Farben aus dem Logo (Petrol) und dem Screendesign: Anthrazit, kühler Grund, Petrol als Akzent */
+/* Variante B: Schwarz, Weiß und Rost als Akzent, Petrol nur noch im Logo */
 :root {
-  --ground: #eef1f1;
-  --sheet: #f7f9f9;
-  --anthracite: #243036;
-  --ink: #1e282d;
-  --ink-2: #3e4b53;
-  --muted: #51606a;
-  --line: #cbd3d5;
-  --line-strong: #8a979e;
-  --line-dark: #34434a;
-  --on-dark: #f5f8f8;
-  --on-dark-2: #d6dee1;
-  --on-dark-muted: #aebbc1;
-  --on-dark-soft: #c9d3d7;
+  --ground: #f2f1ee;
+  --sheet: #ffffff;
+  --anthracite: #1b1b1b;
+  --ink: #151515;
+  --ink-2: #3d3d3d;
+  --muted: #5c5c5c;
+  --line: #d6d4cf;
+  --line-strong: #8c8a85;
+  --line-dark: #333333;
+  --on-dark: #f7f6f3;
+  --on-dark-2: #dcdad5;
+  --on-dark-muted: #b3b0aa;
+  --on-dark-soft: #cfccc6;
   --petrol: #00968a;
   /* Buttons: dunkleres Petrol mit weißer Schrift (Kontrast > 4,5:1) */
-  --accent: #007a6e;
-  --accent-hover: #00665c;
+  --accent: #b4512a;
+  --accent-hover: #963f1d;
   --accent-ink: #ffffff;
   /* Helles Petrol für Akzente auf dunklem Grund */
-  --accent-light: #4fc3b4;
-  --link: #2f5e7e;
-  --footer: #1e282d;
-  --privat: #007a6e;
-  --hero-overlay: rgba(30, 40, 45, .9);
-  --stripe: rgba(0, 150, 138, .22);
+  --accent-light: #e8946b;
+  --link: #9a4522;
+  --footer: #111111;
+  --privat: #b4512a;
+  --hero-overlay: rgba(17, 17, 17, .88);
+  --stripe: rgba(180, 81, 42, .25);
 }
 
 @theme inline {
