@@ -25,6 +25,8 @@
   --link: #2f5e7e;
   --footer: #1e282d;
   --privat: #007a6e;
+  --hero-overlay: rgba(30, 40, 45, .9);
+  --stripe: rgba(0, 150, 138, .22);
 }
 
 @theme inline {

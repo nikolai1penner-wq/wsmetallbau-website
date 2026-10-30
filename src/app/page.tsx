@@ -2,24 +2,34 @@ import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq, type FaqItem } from "@/components/Faq";
 import { Foto } from "@/components/Foto";
-import { LeistungGrid, type Karte } from "@/components/LeistungGrid";
 import { bilderFuer } from "@/lib/bilder";
 import { publishedReferenzen } from "@/lib/referenzen";
 import { site } from "@/lib/site";
 
-const leistungen: Karte[] = [
-  { tag: "Objektbau", title: "Sonderkonstruktionen", text: "Stahlkonstruktionen und Sonderanfertigungen aus Stahl, Edelstahl und Glas nach Ihren Plänen, von der Werkplanung bis zur Montage.", href: "/objektbau/sonderkonstruktionen/" },
-  { tag: "Objektbau · Privat", title: "Treppen", text: "Stahltreppen, Spindeltreppen, Innen- und Außentreppen nach DIN 18065, feuerverzinkt oder pulverbeschichtet.", href: "/privat/treppen/", bildKey: "treppen" },
-  { tag: "Objektbau · Privat", title: "Balkone", text: "Vorstellbalkone und Balkonanlagen für Neubau und Sanierung, selbsttragend auf Stützen und ohne Eingriff in die Dämmung.", href: "/objektbau/balkonanlagen/", bildKey: "balkone" },
-  { tag: "Objektbau · Privat", title: "Geländer und Glas", text: "Edelstahlgeländer, Stahlgeländer und Ganzglasgeländer für Balkon, Treppe, Terrasse und französischen Balkon.", href: "/privat/gelaender/", bildKey: "gelaender" },
-  { tag: "Privat · Gewerbe", title: "Lofttüren und Trennwände", text: "Lofttüren und Stahl-Glas-Trennwände nach Maß, als Dreh- oder Schiebetür, für Wohnung, Büro und Praxis.", href: "/privat/loft-tueren-trennwaende/", bildKey: "loft-tueren-trennwaende" },
-  { tag: "Objektbau", title: "Stahlbau und Industrie", text: "Bühnen, Podeste, Überdachungen und Stahlkonstruktionen für Gewerbe und Industrie.", href: "/objektbau/stahlbau-industrie/" },
+// Bildkacheln nach Kromm-Vorbild: Foto mit Titel, darunter ein Satz
+const leistungen = [
+  { title: "Treppen", text: "Spindel-, Innen- und Außentreppen aus Stahl", href: "/privat/treppen/", bildKey: "treppen" },
+  { title: "Balkone", text: "Vorstellbalkone und Balkonanlagen", href: "/objektbau/balkonanlagen/", bildKey: "balkone" },
+  { title: "Geländer", text: "Edelstahl, Stahl und Ganzglas", href: "/privat/gelaender/", bildKey: "gelaender" },
+  { title: "Lofttüren", text: "Stahl-Glas-Türen und Trennwände nach Maß", href: "/privat/loft-tueren-trennwaende/", bildKey: "loft-tueren-trennwaende" },
+  { title: "Vordächer", text: "Für Haustür, Terrasse und Eingang", href: "/privat/vordaecher/", bildKey: "vordaecher" },
+  { title: "Fenstergitter", text: "Einbruchschutz aus Stahl und Edelstahl", href: "/privat/fenstergitter/", bildKey: "fenstergitter" },
+  { title: "Sonderkonstruktionen", text: "Einzelanfertigungen nach Ihren Plänen", href: "/objektbau/sonderkonstruktionen/", bildKey: "sonderkonstruktionen" },
+  { title: "Stahlbau", text: "Bühnen, Podeste und Überdachungen", href: "/objektbau/stahlbau-industrie/", bildKey: "stahlbau-industrie" },
 ];
 
-const ueberUns = [
-  { title: "Metallbau nach Maß seit über 20 Jahren", text: "Wir fertigen Stahltreppen und Spindeltreppen, Vorstellbalkone, Edelstahl- und Ganzglasgeländer, Lofttüren und Sonderkonstruktionen, die es nicht von der Stange gibt. Mehr als 750 Projekte haben wir in Ostwestfalen-Lippe umgesetzt, vom Einfamilienhaus bis zur Balkonanlage im Mehrfamilienhaus." },
-  { title: "Für Architekten und Bauträger", text: "Werkplanung, Fertigung in eigener Werkstatt und Montage kommen aus einer Hand. Wir liefern Details und Ausschreibungstexte für Ihre Planung und halten Termine auch bei Serienleistungen." },
-  { title: "Für private Bauherren", text: "Wir beraten vor Ort, nehmen Maß und bauen ein. Mit ein paar Fotos und ungefähren Maßen geben wir Ihnen vorab eine erste Einschätzung, womit Sie rechnen können." },
+const vorteile = [
+  { title: "Gebaut nach Maß", text: "Jedes Teil entsteht für Ihr Gebäude, nicht aus dem Katalog." },
+  { title: "Aus einer Hand", text: "Aufmaß, Werkplanung, Fertigung und Montage machen wir selbst." },
+  { title: "Saubere Verarbeitung", text: "Gerade Nähte, glatte Kanten, langlebige Oberflächen." },
+  { title: "Verlässliche Termine", text: "Feste Ansprechpartner und Montage, wie vereinbart." },
+];
+
+const warum = [
+  { title: "Beratung vor Ort", text: "Wir kommen zu Ihnen, schauen uns die Situation an und nehmen selbst Maß. So passt am Ende jedes Detail." },
+  { title: "Durchdachte Planung", text: "Bevor geschweißt wird, steht die Werkplanung. Anschlüsse, Oberflächen und Statik klären wir vorab, mit Partnern für die Tragwerksplanung." },
+  { title: "Fertigung in Herford", text: "Zuschnitt, Schweißen und Schleifen passieren in unserer eigenen Werkstatt. Seit über 20 Jahren und in mehr als 750 Projekten." },
+  { title: "Saubere Montage", text: "Unsere eigenen Teams bauen ein, räumen auf und übergeben erst, wenn alles sitzt. In ganz OWL und 100 km um Herford." },
 ];
 
 // TODO: Angebotsfrist für Objektprojekte („innerhalb von X Werktagen“) ergänzen, sobald bestätigt
@@ -44,27 +54,38 @@ export default function Home() {
   const referenz = publishedReferenzen[0];
   return (
     <>
-      <section className="dark pt-10 sm:pt-14">
-        <div className="wrap flex flex-wrap items-end gap-12">
-          <div className="flex min-w-0 flex-[1_1_480px] flex-col gap-6 pb-4 sm:pb-16">
-            <span className="eyebrow text-on-dark-muted">Metallbau in Herford · Ostwestfalen-Lippe</span>
-            <h1 className="h1">Metallbau in Herford: Treppen, Balkone, Geländer und Sonder&shy;konstruktionen</h1>
-            <p className="lede text-on-dark-2">
-              W&amp;S Metallbau plant, fertigt und montiert Konstruktionen aus Stahl, Edelstahl und Glas. Für Architekten, Bauträger und private Bauherren in Herford, Bielefeld und ganz OWL.
-            </p>
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Link href="/objektbau/" className="btn">Für Architekten &amp; Bauträger</Link>
-              <Link href="/privat/" className="btn-ghost-light">Für Bauherren &amp; Privat</Link>
-            </div>
+      <section className="dark relative isolate overflow-hidden">
+        <Foto
+          bild={bilderFuer("treppen")[0] ?? bilderFuer("loft-tueren-trennwaende")[0]}
+          label="Treppe oder Geländer, fertig montiert"
+          priority
+          className="!absolute inset-0 -z-10"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,var(--hero-overlay)_0%,var(--hero-overlay)_45%,transparent_100%)]" aria-hidden />
+        <div className="wrap flex min-h-[520px] flex-col justify-center gap-6 py-16 sm:min-h-[620px]">
+          <span className="eyebrow text-accent-light">Metallbau aus Herford</span>
+          <h1 className="h1 max-w-[640px] text-white">Metallbau in Herford. Treppen, Balkone und Geländer nach Maß.</h1>
+          <p className="lede max-w-[520px] text-on-dark-2">
+            Wir planen, fertigen und montieren Konstruktionen aus Stahl, Edelstahl und Glas. Für Bauherren, Architekten und Bauträger in ganz OWL.
+          </p>
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Link href="/anfrage/" className="btn">Projekt anfragen</Link>
+            <Link href="/privat/loft-tueren-trennwaende/#anfrage" className="btn-ghost-light">Lofttür anfragen</Link>
           </div>
-          <Foto
-            bild={bilderFuer("treppen")[0] ?? bilderFuer("loft-tueren-trennwaende")[0]}
-            label="Sonderkonstruktion oder Treppe in Montage"
-            priority
-            className="-mx-4 h-[260px] min-w-0 flex-[1_1_520px] sm:mx-0 sm:h-[520px]"
-            sizes="(min-width: 1024px) 620px, 100vw"
-          />
         </div>
+      </section>
+
+      <section aria-label="Unsere Stärken" className="border-b border-line bg-sheet">
+        <ul className="wrap grid sm:grid-cols-2 lg:grid-cols-4">
+          {vorteile.map((v, i) => (
+            <li key={v.title} className={`flex flex-col gap-1.5 border-line py-7 sm:px-6 ${i ? "border-t sm:border-t-0" : ""} ${i % 2 ? "sm:border-l" : "sm:pl-0"} ${i === 2 ? "lg:border-l lg:pl-6" : ""}`}>
+              <span aria-hidden className="mb-1 block h-[3px] w-8 bg-petrol" />
+              <h2 className="font-display text-xl font-bold">{v.title}</h2>
+              <p className="text-[15px] text-ink-2">{v.text}</p>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section aria-label="Kennzahlen" className="rule border-b-[1.5px] border-b-anthracite bg-sheet">
@@ -105,30 +126,30 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="pb-16 sm:pb-24">
+      <section className="section pt-4 sm:pt-8">
         <div className="wrap grid gap-8">
           <div className="grid gap-3">
-            <span className="eyebrow text-muted">Über uns</span>
-            <h2 className="h2">Ihr Metallbauer für Herford, Bielefeld und OWL</h2>
+            <span className="eyebrow text-accent">Unsere Leistungen</span>
+            <h2 className="h2">Stahl, Edelstahl und Glas. Gefertigt für Ihr Gebäude.</h2>
           </div>
-          <div className="grid gap-8 md:grid-cols-3">
-            {ueberUns.map((b) => (
-              <div key={b.title} className="rule grid content-start gap-2.5 pt-5">
-                <h3 className="h3">{b.title}</h3>
-                <p className="text-ink-2">{b.text}</p>
-              </div>
+          <ul className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+            {leistungen.map((l) => (
+              <li key={l.href + l.title}>
+                <Link href={l.href} className="group relative block aspect-[4/5] overflow-hidden bg-anthracite text-white no-underline">
+                  {bilderFuer(l.bildKey)[0] ? (
+                    <Foto bild={bilderFuer(l.bildKey)[0]} label={l.title} className="!absolute inset-0 transition-transform duration-500 group-hover:scale-105" sizes="(min-width: 1024px) 300px, 50vw" />
+                  ) : (
+                    // Noch kein Foto: dunkle Kachel mit den Streifen aus dem Logo
+                    <span aria-hidden className="absolute inset-0 bg-[repeating-linear-gradient(120deg,transparent_0_28px,var(--stripe)_28px_44px)] transition-transform duration-500 group-hover:scale-105" />
+                  )}
+                  <span className="absolute inset-x-0 bottom-0 flex flex-col gap-0.5 bg-[linear-gradient(0deg,rgba(0,0,0,.78),transparent)] p-4 pt-16 sm:p-5 sm:pt-20">
+                    <span className="font-display text-xl leading-tight font-bold sm:text-2xl">{l.title}</span>
+                    <span className="hidden text-sm text-white/85 sm:block">{l.text}</span>
+                  </span>
+                </Link>
+              </li>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="pb-16 sm:pb-24">
-        <div className="wrap grid gap-8">
-          <div className="rule flex flex-wrap items-end justify-between gap-4 pt-7">
-            <h2 className="h2">Metallbau-Leistungen im Überblick</h2>
-            <p className="max-w-[520px] text-muted">Jede Leistung gibt es mit technischen Angaben für den Objektbau und mit Galerie und Anfrage für private Bauherren.</p>
-          </div>
-          <LeistungGrid items={leistungen} />
+          </ul>
         </div>
       </section>
 
@@ -145,6 +166,26 @@ export default function Home() {
           </div>
         </section>
       )}
+
+      <section className="dark section">
+        <div className="wrap flex flex-wrap gap-12">
+          <div className="flex min-w-0 flex-[1_1_360px] flex-col gap-5">
+            <span className="eyebrow text-accent-light">Warum W&amp;S Metallbau?</span>
+            <h2 className="h2">Erfahrung aus über 750 Projekten. Und der Anspruch, es sauber zu machen.</h2>
+            <p className="text-on-dark-2">Wir sind ein Metallbaubetrieb aus Herford. Bei uns sprechen Sie mit den Leuten, die Ihr Projekt planen, schweißen und einbauen.</p>
+            <Link href="/anfrage/" className="btn self-start">Projekt anfragen</Link>
+          </div>
+          <ul className="grid min-w-0 flex-[2_1_520px] gap-x-10 gap-y-8 sm:grid-cols-2">
+            {warum.map((w, i) => (
+              <li key={w.title} className="flex flex-col gap-2 border-t border-line-dark pt-5">
+                <span className="font-mono text-sm text-accent-light">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="h3">{w.title}</h3>
+                <p className="text-on-dark-soft">{w.text}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       <section className="section">
         <div className="wrap flex flex-wrap gap-12">
